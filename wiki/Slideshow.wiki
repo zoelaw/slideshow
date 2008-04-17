@@ -1,0 +1,44 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Slideshow is a javascript class for Mootools 1.2 to stream and animate the presentation of images on your website.
+
+= Syntax =
+
+{{{
+var myShow = new Slideshow(element, data, options);
+}}}
+
+= Arguments =
+
+# element - (element) The slideshow wrapper element.
+# data - (array or object) The images, thumbnails, captions and links for the slideshow.
+# options - (object) The options below.
+
+== Options ==
+
+* captions - (boolean or object: default false) Whether to show captions.
+* center - (boolean: default true) Whether the slideshow should attempt to center images.
+* classes - (array) An array of CSS class names to use with styling the slideshow.
+* controller - (boolean or object: default false) Whether to show controller.
+* delay - (integer: default 2000) The delay between slide changes in milliseconds (1000 = 1 second).
+* duration - (integer: default 750) The duration of the effect in milliseconds (1000 = 1 second).
+* fast - (boolean: default false) The slideshow will not wait until the current transition completes, but update the slide change instantly.
+* height - (boolean or integer: default false) Optional height value for the slideshow as a whole integer, if a height value is not given the height of the default image will be used.
+* href - (string: default empty) A single link for the slideshow, inherited from the HTML href of the slideshow.
+* hu - (string) Path to the image directory, relative or absolute, default is the same directory as the web page.
+* linked - (boolean: default false) Whether the class should automatically link each slide to the fullsize image.
+* loader - (boolean: default true) Show the loader graphic for images being loaded.
+* loop - (boolean: default true) Should the slideshow loop.
+* match - (regexp) A regular expression the class uses to parse the URL, will overwrite "slide" below, default looks for "?slide=n" where "n" would be the slide to start from.
+* overlap - (boolean: default true) Whether images overlap in the basic slideshow, or if the first image transitions out before the second transitions in.
+* paused - (boolean: default false) Whether the slideshow should start paused.
+* quick - (boolean: default false) Quick start for the slideshow, whether the show starts by transitioning.
+* random - (boolean: default false) Random slideshow, combined with thumbnails equals very cool!
+* replace - (array) An array, consisting of a regular expression pattern and a string replacement, for building thumbnail filenames based on the name of the original image.
+* resize - (boolean: default true) Whether the slideshow should attempt to resize images.
+* slide - (integer: default 0) Slide from which to start the show.
+* thumbnails - (boolean or object: default false) Whether to show thumbnails.
+* transition - (function: default Sine) Transition to use with base and push type slideshows (requires Mootools with Fx.Transitions).
+* width - (boolean or integer: default false) Optional width value for the slideshow as a whole integer, if a width value is not given the width of the default image will be used.
