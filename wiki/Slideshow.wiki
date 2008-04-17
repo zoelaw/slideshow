@@ -1,22 +1,22 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+== Introduction ==
 
 Slideshow is a javascript class for Mootools 1.2 to stream and animate the presentation of images on your website.
 
-= Syntax =
+== Syntax ==
 
 {{{
 var myShow = new Slideshow(element, data, options);
 }}}
 
-= Arguments =
+== Arguments ==
 
 # element - (element) The slideshow wrapper element.
 # data - (array or object) The images, thumbnails, captions and links for the slideshow.
 # options - (object) The options below.
 
-== Options ==
+=== Options ===
 
 * captions - (boolean or object: default false) Whether to show captions.
 * center - (boolean: default true) Whether the slideshow should attempt to center images.
