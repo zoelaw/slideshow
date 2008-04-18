@@ -1,16 +1,16 @@
 #summary Documentation
 
-=== Introduction ===
+=== Method: constructor ===
 
-Slideshow is a javascript class for Mootools 1.2 to stream and animate the presentation of images on your website.
+Creates an instance of the Slideshow class. Applied to an existing element(s) in the HTML. Can parse in existing images, alt attributes, thumbnails, etc. or create as necessary.
 
-=== Syntax ===
+==== Syntax ====
 
 {{{
 var myShow = new Slideshow(element, data, options);
 }}}
 
-=== Arguments ===
+==== Arguments ====
 
   # element - (element) The slideshow wrapper element.
   # data - (array or object) The images, thumbnails, captions and links for the slideshow.
