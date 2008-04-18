@@ -1,0 +1,21 @@
+#summary Documentation
+
+==== Extends ====
+
+[http://code.google.com/p/slideshow/wiki/Slideshow Slideshow]
+
+=== Method: constructor ===
+
+Creates a pushing slideshow where the new image _pushes_ the current one out of view.
+
+==== Syntax ====
+
+{{{
+var myShow = new Slideshow.Push(element, data, options);
+}}}
+
+==== Arguments ====
+
+  # element - (element) The slideshow wrapper element.
+  # data - (array or object) The images, thumbnails, captions and links for the slideshow.
+  # options - (object) All of the [http://code.google.com/p/slideshow/wiki/Slideshow Slideshow] options.
