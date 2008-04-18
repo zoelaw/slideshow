@@ -1,6 +1,6 @@
 #summary Documentation
 
-=== Extends ===
+==== Extends ====
 
 [http://code.google.com/p/slideshow/wiki/Slideshow Slideshow]
 
