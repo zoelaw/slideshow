@@ -154,3 +154,18 @@ Goes to the last image in the show.
 {{{
 myShow.last();
 }}}
+
+
+=== Method: go ===
+
+Jump directly to a slide in the show.
+
+==== Syntax: ====
+
+{{{
+myShow.go(n);
+}}}
+
+==== Arguments: ====
+
+  # n - (integer) The index number of the image to jump to, 0 being the first image in the show.
