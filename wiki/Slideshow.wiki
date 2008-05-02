@@ -56,26 +56,26 @@ var myShow = new Slideshow(element, data, options);
 </div>
 
 <script type="text/javascript">
-  var myShow = new Slideshow('my_show', ['1.jpg', '2.jpg', '3.jpg'], {controller: true, hu: 'images/', linked: true});
+  var myShow = new Slideshow('my_show', ['1.jpg', '2.jpg', '3.jpg'], {href: 'portfolio.html', hu: 'images/'});
 </script>
 }}}
 
 {{{
 <div id="my_show" class="Slideshow">
-  <img src="1.jpg" alt="Keylin" />
+  <a rel="lightbox" href="1.jpg"><img src="1.jpg" alt="Keylin" /></a>
 </div>
 
 <script type="text/javascript">
   var data = {'1.jpg': {caption: 'Keylin'}, '2.jpg': {caption: 'Gustavo'}, '3.jpg': {caption: 'Amalia'}};
 
-  var myShow = new Slideshow('my_show', data, {captions: true, controller: {duration: 1000, transition: Fx.Transitions.Elastic.easeOut}, hu: 'images/'});
+  var myShow = new Slideshow('my_show', data, {captions: true, controller: {duration: 1000, transition: Fx.Transitions.Elastic.easeOut}, hu: 'images/', linked: true});
 </script>
 }}}
 
 ==== Notes: ====
 
-  * ^1^Captions, controller, loader and thumbnails all accept either a boolean (true / false) or [http://docs12b.mootools.net/Fx/Fx Fx options object] to customize element effect. In the case of the loader, the object also accepts an additional attribute 'animate' with the value an array consisting of a filename and frame count. Things get a little more complicated here: the filename should use the '#' symbol to indicate frame number. For example, the default value: `{ 'animate': ['../css/loader-#.png', 12] }` assumes there are 12 images at the path indicated named `loader-0.png` through `loader-11.png`. The purpose of all this is for the loader to animate a series of PNG images in place of the usual animated GIF (which cannot _blend_ with the images in the Slideshow). Assuming you are using a series of PNG images Slideshow will automatically apply the correct filters for Internet Explorer 6.
- * ^2^Internally the classes are in the following order: `[ 'Slideshow', 'first', 'prev', 'play', 'pause', 'next', 'last', 'controller', 'thumbnails', 'captions', 'images', 'hidden', 'visible', 'inactive', 'active', 'loader' ]`. Therefore if you wanted to change the name of the classes used for the controller (which also affects the HTML titles used for the controls themselves) you would set: `classes: ['',  'primero', 'anterior', 'comenza', 'pausa', 'proximo', 'ultimo']`.
+  * ^1^ Captions, controller, loader and thumbnails all accept either a boolean (true / false) or [http://docs12b.mootools.net/Fx/Fx Fx options object] to customize element effect. In the case of the loader, the object also accepts an additional attribute 'animate' with the value an array consisting of a filename and frame count. Things get a little more complicated here: the filename should use the '#' symbol to indicate frame number. For example, the default value: `{ 'animate': ['../css/loader-#.png', 12] }` assumes there are 12 images at the path indicated named `loader-0.png` through `loader-11.png`. The purpose of all this is for the loader to animate a series of PNG images in place of the usual animated GIF (which cannot _blend_ with the images in the Slideshow). Assuming you are using a series of PNG images Slideshow will automatically apply the correct filters for Internet Explorer 6.
+ * ^2^ Internally the classes are in the following order: `[ 'Slideshow', 'first', 'prev', 'play', 'pause', 'next', 'last', 'controller', 'thumbnails', 'captions', 'images', 'hidden', 'visible', 'inactive', 'active', 'loader' ]`. Therefore if you wanted to change the name of the classes used for the controller (which also affects the HTML titles used for the controls themselves) you would set: `classes: ['',  'primero', 'anterior', 'comenza', 'pausa', 'proximo', 'ultimo']`. Class names left empty or not specified will use the Slideshow defaults.
   
 
 === Method: load ===
