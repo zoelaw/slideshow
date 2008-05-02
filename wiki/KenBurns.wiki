@@ -1,6 +1,7 @@
 #summary Documentation
+#labels Featured,Phase-Implementation
 
-==== Extends ====
+==== Extends: ====
 
 [http://code.google.com/p/slideshow/wiki/Slideshow Slideshow]
 
@@ -8,19 +9,31 @@
 
 Creates a Ken Burns slideshow with zooming and panning effects.
 
-==== Syntax ====
+==== Syntax: ====
 
 {{{
 var myShow = new Slideshow.KenBurns(element, data, options);
 }}}
 
-==== Arguments ====
+==== Arguments: ====
 
   # element - (element) The slideshow wrapper element.
   # data - (array or object) The images, thumbnails, captions and links for the slideshow.
   # options - (object) All of the [http://code.google.com/p/slideshow/wiki/Slideshow Slideshow] options in addition to the options below.
 
-==== Options ====
+==== Options: ====
 
   * pan - (integer or array: default 100) An integer, or range of integers as an array, from 0 to 100 that pans the slide 0% to 100% of it's overflow.
   * zoom - (integer or array: default 50) An integer, or range of integers as an array, from 0 to 100 that zooms the slide 1× to 2× of the size of the slideshow.
+
+==== Examples: ====
+
+{{{
+<div id="my_show" class="slideshow">
+  <img src="1.jpg" alt="Keylin" />
+</div>
+
+<script type="text/javascript">
+  var myShow = new Slideshow.KenBurns('my_show', ['1.jpg', '2.jpg', '3.jpg'], {pan: 100, zoom: [25, 75]});
+</script>
+}}}
