@@ -13,45 +13,45 @@ var myShow = new Slideshow(element, data, options);
 
 ==== Arguments: ====
 
-  # element - (element) The slideshow wrapper element.
-  # data - (array or object) The images and optional thumbnails, captions and links for the slideshow.
+  # element - (element) The wrapper element.
+  # data - (array or object) The images and optional thumbnails, captions and links for the show.
   # options - (object) The options below.
 
 ==== Options: ====
 
   * captions^1^ - (boolean or Fx options object: default false) Whether to show captions.
-  * center - (boolean: default true) Whether the slideshow should attempt to center images.
-  * classes - (array) An array of CSS class names to use with styling the slideshow.
+  * center - (boolean: default true) Whether the show should attempt to center images.
+  * classes^2^  - (array) An array of CSS class names to use with styling the show.
   * controller^1^ - (boolean or Fx options object: default false) Whether to show controller.
   * delay - (integer: default 2000) The delay between slide changes in milliseconds (1000 = 1 second).
   * duration - (integer: default 750) The duration of the effect in milliseconds (1000 = 1 second).
-  * fast - (boolean: default false) The slideshow will not wait until the current transition completes, but update the slide change instantly.
-  * height - (boolean or integer: default false) Optional height value for the slideshow as a whole integer, if a height value is not given the height of the default image will be used.
-  * href - (string: default empty) A single link for the slideshow, inherited from the HTML href of the slideshow.
+  * fast - (boolean: default false) The show will not wait until the current transition completes, but update the slide change instantly.
+  * height - (boolean or integer: default false) Optional height value for the show as a whole integer, if a height value is not given the height of the default image will be used.
+  * href - (string: default empty) A single link for the show, inherited from the HTML href of the default image.
   * hu - (string) Path to the image directory, relative or absolute, default is the same directory as the web page.
-  * linked - (boolean: default false) Whether the class should automatically link each slide to the fullsize image.
+  * linked - (boolean: default false) Whether the class should automatically link each slide to the fullsize image, useful when mashing Slideshow with Slimbox, Lightbox, etc.
   * loader^1^ - (boolean or Fx options object: default object) Show the loader graphic for images being loaded.
-  * loop - (boolean: default true) Should the slideshow loop.
-  * match - (regexp) A regular expression the class uses to parse the URL, will overwrite "slide" below, default looks for "?slide=n" where "n" would be the slide to start from.
-  * overlap - (boolean: default true) Whether images overlap in the basic slideshow, or if the first image transitions out before the second transitions in.
-  * paused - (boolean: default false) Whether the slideshow should start paused.
-  * quick - (boolean: default false) Quick start for the slideshow, whether the show starts by transitioning.
-  * random - (boolean: default false) Random slideshow, combined with thumbnails equals very cool!
-  * replace - (array) An array, consisting of a regular expression pattern and a string replacement, for building thumbnail filenames based on the name of the original image.
-  * resize - (boolean: default true) Whether the slideshow should attempt to resize images.
+  * loop - (boolean: default true) Should the show loop.
+  * match - (regexp) A regular expression the class uses to parse the URL, will overwrite "slide" below, default looks for `?slide=n` where "n" would be the slide to start from.
+  * overlap - (boolean: default true) Whether images overlap in the basic show, or if the first image transitions out before the second transitions in.
+  * paused - (boolean: default false) Whether the show should start paused.
+  * quick - (boolean: default false) Quick start for the show, the show will start transitioning to the second image.
+  * random - (boolean: default false) Random show, combined with thumbnails equals very cool!
+  * replace - (array) An array, consisting of a regular expression pattern and a string replacement, for building thumbnail filenames based on the name of the original image, default appends a "t" to the image filename before the extension.
+  * resize - (boolean: default true) Whether the show should attempt to resize images.
   * slide - (integer: default 0) Slide from which to start the show.
   * thumbnails^1^ - (boolean or Fx options object: default false) Whether to show thumbnails.
-  * transition - (function: default Sine) Transition to use with base and push type slideshows (requires Mootools with Fx.Transitions).
-  * width - (boolean or integer: default false) Optional width value for the slideshow as a whole integer, if a width value is not given the width of the default image will be used.
+  * transition - (function: default Sine) Transition to use with base and push type shows (requires Mootools with Fx.Transitions).
+  * width - (boolean or integer: default false) Optional width value for the show as a whole integer, if a width value is not given the width of the default image will be used.
   
 ==== Returns: ====
   
-  * (object) A new slideshow instance.
+  * (object) A new Slideshow instance.
 
 ==== Examples: ====
 
 {{{
-<div id="my_show" class="slideshow">
+<div id="my_show" class="Slideshow">
   <img src="1.jpg" alt="Keylin" />
 </div>
 
@@ -61,7 +61,7 @@ var myShow = new Slideshow(element, data, options);
 }}}
 
 {{{
-<div id="my_show" class="slideshow">
+<div id="my_show" class="Slideshow">
   <img src="1.jpg" alt="Keylin" />
 </div>
 
@@ -75,6 +75,7 @@ var myShow = new Slideshow(element, data, options);
 ==== Notes: ====
 
   * ^1^Captions, controller, loader and thumbnails all accept either a boolean (true / false) or [http://docs12b.mootools.net/Fx/Fx Fx options object] to customize element effect. In the case of the loader, the object also accepts an additional attribute 'animate' with the value an array consisting of a filename and frame count. Things get a little more complicated here: the filename should use the '#' symbol to indicate frame number. For example, the default value: `{ 'animate': ['../css/loader-#.png', 12] }` assumes there are 12 images at the path indicated named `loader-0.png` through `loader-11.png`. The purpose of all this is for the loader to animate a series of PNG images in place of the usual animated GIF (which cannot _blend_ with the images in the Slideshow). Assuming you are using a series of PNG images Slideshow will automatically apply the correct filters for Internet Explorer 6.
+ * ^2^Internally the classes are in the following order: `[ 'Slideshow', 'first', 'prev', 'play', 'pause', 'next', 'last', 'controller', 'thumbnails', 'captions', 'images', 'hidden', 'visible', 'inactive', 'active', 'loader' ]`. Therefore if you wanted to change the name of the classes used for the controller (which also affects the HTML titles used for the controls themselves) you would set: `classes: ['',  'primero', 'anterior', 'comenza', 'pausa', 'proximo', 'ultimo']`.
   
 
 === Method: load ===
@@ -89,7 +90,7 @@ var myShow.load(data);
 
 ==== Arguments: ====
 
-  # data - (array or object) The images and optional thumbnails, captions and links for the slideshow.
+  # data - (array or object) The images and optional thumbnails, captions and links for the show.
 
 ==== Returns: ====
   
@@ -120,7 +121,7 @@ var myShow.prev();
 
 === Method: pause ===
 
-Toggles play / pause state of the slideshow.
+Toggles play / pause state of the show.
 
 ==== Syntax: ====
 
