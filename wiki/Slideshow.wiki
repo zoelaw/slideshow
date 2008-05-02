@@ -126,12 +126,12 @@ Toggles play / pause state of the show.
 ==== Syntax: ====
 
 {{{
-myShow.pause();
+myShow.pause(p);
 }}}
 
 ==== Arguments: ====
 
-  # p - (1 or 0) Call pause(1) to force pause, or pause(0) to force play.
+  # p - (undefined, 1 or 0) Call pause with no arguments to toggle the pause state. Call pause(1) to force pause, or pause(0) to force play.
 
 
 === Method: next ===
