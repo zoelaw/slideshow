@@ -1,4 +1,5 @@
 #summary Reference
+#labels Featured,Phase-Implementation
 
 The following represents the structure of the HTML Slideshow constructs upon initialization:
 
