@@ -85,7 +85,7 @@ Loads a new data set into the show: will stop the current show, rewind and rebui
 ==== Syntax: ====
 
 {{{
-var myShow.load(data);
+myShow.load(data);
 }}}
 
 ==== Arguments: ====
@@ -104,7 +104,7 @@ Goes to the first image in the show.
 ==== Syntax: ====
 
 {{{
-var myShow.first();
+myShow.first();
 }}}
 
 
@@ -115,7 +115,7 @@ Goes to the previous image in the show.
 ==== Syntax: ====
 
 {{{
-var myShow.prev();
+myShow.prev();
 }}}
 
 
@@ -126,7 +126,7 @@ Toggles play / pause state of the show.
 ==== Syntax: ====
 
 {{{
-var myShow.pause();
+myShow.pause();
 }}}
 
 ==== Arguments: ====
@@ -141,7 +141,7 @@ Goes to the next image in the show.
 ==== Syntax: ====
 
 {{{
-var myShow.next();
+myShow.next();
 }}}
 
 
@@ -152,5 +152,5 @@ Goes to the last image in the show.
 ==== Syntax: ====
 
 {{{
-var myShow.last();
+myShow.last();
 }}}
