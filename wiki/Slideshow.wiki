@@ -19,10 +19,10 @@ var myShow = new Slideshow(element, data, options);
 
 ==== Options: ====
 
-  * captions - (boolean or Fx options object: default false) Whether to show captions.
+  * captions^1^ - (boolean or Fx options object: default false) Whether to show captions.
   * center - (boolean: default true) Whether the slideshow should attempt to center images.
   * classes - (array) An array of CSS class names to use with styling the slideshow.
-  * controller - (boolean or Fx options object: default false) Whether to show controller.
+  * controller^1^ - (boolean or Fx options object: default false) Whether to show controller.
   * delay - (integer: default 2000) The delay between slide changes in milliseconds (1000 = 1 second).
   * duration - (integer: default 750) The duration of the effect in milliseconds (1000 = 1 second).
   * fast - (boolean: default false) The slideshow will not wait until the current transition completes, but update the slide change instantly.
@@ -30,7 +30,7 @@ var myShow = new Slideshow(element, data, options);
   * href - (string: default empty) A single link for the slideshow, inherited from the HTML href of the slideshow.
   * hu - (string) Path to the image directory, relative or absolute, default is the same directory as the web page.
   * linked - (boolean: default false) Whether the class should automatically link each slide to the fullsize image.
-  * loader - (boolean or Fx options object: default true) Show the loader graphic for images being loaded.
+  * loader^1^ - (boolean or Fx options object: default object) Show the loader graphic for images being loaded.
   * loop - (boolean: default true) Should the slideshow loop.
   * match - (regexp) A regular expression the class uses to parse the URL, will overwrite "slide" below, default looks for "?slide=n" where "n" would be the slide to start from.
   * overlap - (boolean: default true) Whether images overlap in the basic slideshow, or if the first image transitions out before the second transitions in.
@@ -40,7 +40,7 @@ var myShow = new Slideshow(element, data, options);
   * replace - (array) An array, consisting of a regular expression pattern and a string replacement, for building thumbnail filenames based on the name of the original image.
   * resize - (boolean: default true) Whether the slideshow should attempt to resize images.
   * slide - (integer: default 0) Slide from which to start the show.
-  * thumbnails - (boolean or Fx options object: default false) Whether to show thumbnails.
+  * thumbnails^1^ - (boolean or Fx options object: default false) Whether to show thumbnails.
   * transition - (function: default Sine) Transition to use with base and push type slideshows (requires Mootools with Fx.Transitions).
   * width - (boolean or integer: default false) Optional width value for the slideshow as a whole integer, if a width value is not given the width of the default image will be used.
   
@@ -74,53 +74,81 @@ var myShow = new Slideshow(element, data, options);
 
 ==== Notes: ====
 
-  * Captions, controller, loader and thumbnails all accept either a boolean (true / false) or [http://docs12b.mootools.net/Fx/Fx Fx options object] to customize effects.
+  * ^1^Captions, controller, loader and thumbnails all accept either a boolean (true / false) or [http://docs12b.mootools.net/Fx/Fx Fx options object] to customize element effect. In the case of the loader, the object also accepts an additional attribute 'animate' with the value an array consisting of a filename and frame count. Things get a little more complicated here: the filename should use the '#' symbol to indicate frame number. For example, the default value: `{ 'animate': ['../css/loader-#.png', 12] }` assumes there are 12 images at the path indicated named `loader-0.png` through `loader-11.png`. The purpose of all this is for the loader to animate a series of PNG images in place of the usual animated GIF (which cannot _blend_ with the images in the Slideshow). Assuming you are using a series of PNG images Slideshow will automatically apply the correct filters for Internet Explorer 6.
   
+
+=== Method: load ===
+
+Loads a new data set into the show: will stop the current show, rewind and rebuild thumbnails if applicable.
+
+==== Syntax: ====
+
+{{{
+var myShow.load(data);
+}}}
+
+==== Arguments: ====
+
+  # data - (array or object) The images and optional thumbnails, captions and links for the slideshow.
+
+==== Returns: ====
+  
+  * (integer) Number of images loaded.
+
+
 === Method: first ===
 
 Goes to the first image in the show.
 
-==== Syntax ====
+==== Syntax: ====
 
 {{{
 var myShow.first();
 }}}
 
+
 === Method: prev ===
 
 Goes to the previous image in the show.
 
-==== Syntax ====
+==== Syntax: ====
 
 {{{
 var myShow.prev();
 }}}
 
+
 === Method: pause ===
 
 Toggles play / pause state of the slideshow.
 
-==== Syntax ====
+==== Syntax: ====
 
 {{{
 var myShow.pause();
 }}}
 
+==== Arguments: ====
+
+  # p - (1 or 0) Call pause(1) to force pause, or pause(0) to force play.
+
+
 === Method: next ===
 
 Goes to the next image in the show.
 
-==== Syntax ====
+==== Syntax: ====
 
 {{{
 var myShow.next();
 }}}
 
+
 === Method: last ===
 
 Goes to the last image in the show.
 
-==== Syntax ====
+==== Syntax: ====
 
 {{{
 var myShow.last();
