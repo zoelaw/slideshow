@@ -97,7 +97,7 @@ myShow.load(data);
   * (integer) Number of images loaded.
 
 
-=== Method: destroys ===
+=== Method: destroy ===
 
 Destroys the current slideshow instance: removes global events, clears callbacks, frees memory.
 
@@ -109,7 +109,7 @@ myShow.destroy(p);
 
 ==== Arguments: ====
 
-  # p - (string) Optional parameter indicating desired action for existing show HTML. Upon destroying a show the dynamic HTML becomes static - non-interactive. Call destroy with the parameter `empty` to remove all existing HTML _inside_ of the show - useful to apply a new Slideshow instance to the same wrapper element. Call destroy with the parameter `dispose` to remove all existing HTML _and_ the wrapper element - useful to complete remove a Slideshow instance from the page.
+  # p - (string) Optional parameter indicating desired action for existing show HTML. Upon destruction the dynamic HTML of a show becomes static, non-interactive. Call destroy with the parameter `empty` to remove all existing HTML _inside_ of the show - useful to then apply a new Slideshow instance to the same wrapper element. Call destroy with the parameter `dispose` to remove all existing HTML _and_ the wrapper element - useful to completely remove a Slideshow instance from the page.
 
 
 === Method: first ===
