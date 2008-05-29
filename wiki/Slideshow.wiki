@@ -53,7 +53,7 @@ var myShow = new Slideshow(element, data, options);
   * Example 1: Simple Slideshow; data passed in as an array; show is linked to a static url.
 
 {{{
-<div id="my_show" class="Slideshow">
+<div id="my_show" class="slideshow">
   <img src="1.jpg" alt="Keylin" />
 </div>
 
@@ -67,7 +67,7 @@ var myShow = new Slideshow(element, data, options);
   * Example 2: Ken Burns Slideshow; data passed in as an object with captions and links for each image; controller customized with an Fx options object.
 
 {{{
-<div id="my_show" class="Slideshow">
+<div id="my_show" class="slideshow">
   <a rel="lightbox" href="1.jpg"><img src="1.jpg" alt="Keylin" /></a>
 </div>
 
