@@ -56,7 +56,9 @@ var myShow = new Slideshow(element, data, options);
 </div>
 
 <script type="text/javascript">
-  var myShow = new Slideshow('my_show', ['1.jpg', '2.jpg', '3.jpg'], {href: 'portfolio.html', hu: 'images/'});
+  var data = ['1.jpg', '2.jpg', '3.jpg'];
+
+  var myShow = new Slideshow('my_show', data, {href: 'portfolio.html', hu: 'images/'});
 </script>
 }}}
 
@@ -66,7 +68,7 @@ var myShow = new Slideshow(element, data, options);
 </div>
 
 <script type="text/javascript">
-  var data = {'1.jpg': {caption: 'Keylin'}, '2.jpg': {caption: 'Gustavo'}, '3.jpg': {caption: 'Amalia'}};
+  var data = {'1.jpg': {caption: 'Keylin', href: 'keylin.html'}, '2.jpg': {caption: 'Gustavo', href: 'gustavo.html'}, '3.jpg': {caption: 'Amalia', href: 'amalia.html'}};
 
   var myShow = new Slideshow('my_show', data, {captions: true, controller: {duration: 1000, transition: Fx.Transitions.Elastic.easeOut}, hu: 'images/', linked: true});
 </script>
