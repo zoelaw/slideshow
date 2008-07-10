@@ -1,1 +1,7 @@
 #summary Frequently Asked Questions
+
+=== I would like to specify a directory that contains thumbnail rather then appending a 't' to the image name ===
+
+_For instance "images/1.jpg and images/thumbs/1.jpg" Is this a possibility?_
+
+Sure - you would just need to modify the "replace" option, something like 'replace': [/^(.*)$/, 'thumbs/$1']
