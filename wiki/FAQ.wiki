@@ -1,7 +1,5 @@
 #summary Frequently Asked Questions
 
-=== I would like to specify a directory that contains thumbnail rather then appending a 't' to the image name ===
+=== How to specify a directory for the thumbnail rather then appending a 't' to the image name ===
 
-_For instance "images/1.jpg and images/thumbs/1.jpg" Is this a possibility?_
-
-Sure - you would just need to modify the "replace" option, something like 'replace': [/^(.*)$/, 'thumbs/$1']
+For example, the full-size image is `1.jpg` and the thumbnail `thumbs/1.jpg`. You would need to modify the [http://code.google.com/p/slideshow/wiki/Slideshow#Options: replace] option, something like `'replace': [/^(.*)$/, 'thumbs/$1']`. See [http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:RegExp Regular Expression] reference for more information.
