@@ -1,4 +1,5 @@
 #summary Frequently Asked Questions
+#labels Featured
 
 === How can I specify a directory for the thumbnail rather then appending a 't' to the image name? ===
 
