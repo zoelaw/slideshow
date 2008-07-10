@@ -2,4 +2,28 @@
 
 === How to specify a directory for the thumbnail rather then appending a 't' to the image name? ===
 
-For example, the full-size image is `1.jpg` and the thumbnail `thumbs/1.jpg`. You would need to modify the [http://code.google.com/p/slideshow/wiki/Slideshow#Options: replace] option, something like `'replace': [/^(.*)$/, 'thumbs/$1']`. See [http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:RegExp Regular Expressions] reference for more information.
+_For example, the full-size image is `1.jpg` and the thumbnail `thumbs/1.jpg`._
+
+You would need to modify the [http://code.google.com/p/slideshow/wiki/Slideshow#Options: replace] option, something like:
+
+{{{
+'replace': [/^(.*)$/, 'thumbs/$1']`. 
+}}}
+
+See [http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:RegExp Regular Expressions] reference for more information.
+
+=== OK, but what if the images and thumbs are in two separate folders? ===
+
+_For example, the full-size image is `slides/1.jpg` and the thumbnail `thumbs/1.jpg`._
+
+You will have to use the parent folder "/" for [http://code.google.com/p/slideshow/wiki/Slideshow#Options: hu], then prepend "slides/" to the image filenames: 
+
+{{{
+data = [ 'slides/1.jpg', 'slides/2.jpg', ... ];
+}}}
+
+Then your replace would be something like:
+
+{{{ 
+replace = [/^slides(.*)$/, 'thumbs$1'];
+}}}
