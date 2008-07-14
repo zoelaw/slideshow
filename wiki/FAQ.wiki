@@ -28,3 +28,17 @@ Then your replace would be something like:
 {{{ 
 replace = [/^slides(.*)$/, 'thumbs$1'];
 }}}
+
+=== Is it possible to have multiple slideshows per page? ===
+
+Sure. You will just need to give each wrapper element it's own ID, and initialize a new instance of the class for each one:
+
+{{{ 
+<div id="keylin" class="slideshow"><img src="keylin/1.jpg" alt="Keylin" /></div>
+<div id="gustavo" class="slideshow"><img src="gustavo/1.jpg" alt="Gustavo" /></div>
+
+<script type="text/javascript">
+  var keylin = new Slideshow('keylin', ['1.jpg', '2.jpg', '3.jpg'], {height: 300, hu: 'keylin/', width: 400});
+  var gustavo = new Slideshow('gustavo', ['1.jpg', '2.jpg', '3.jpg'], {height: 300, hu: 'gustavo/', width: 400});
+</script>
+}}}
