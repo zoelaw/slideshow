@@ -40,5 +40,6 @@ var myShow = new Slideshow.KenBurns(element, data, options);
 
 ==== Notes: ====
 
-  * ^1^ There is no sub-pixel position.
-  * ^2^ There is no sub-pixel position.
+  * ^1^ There is no sub-pixel positioning in any 
+browser, so the quality of the panning is determined by how much the image will pan: an image that pans a lot (ie a panoramic image in a square slideshow) will animate smoother.
+  * ^2^ The zooming effect is very dependent on the operating system (ie Windows, Mac, Linux, etc) since the OS is what determines the resampling algorithm used by the browser. In general, any browser on Mac will scale much better.
