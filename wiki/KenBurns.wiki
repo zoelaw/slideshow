@@ -23,8 +23,8 @@ var myShow = new Slideshow.KenBurns(element, data, options);
 
 ==== Options: ====
 
-  * pan - (integer or array: default 100) An integer, or range of integers as an array, from 0 to 100 that pans the slide 0% to 100% of it's overflow.
-  * zoom - (integer or array: default 50) An integer, or range of integers as an array, from 0 to 100 that zooms the slide 1× to 2× of the size of the slideshow.
+  * pan^1^ - (integer or array: default 100) An integer, or range of integers as an array, from 0 to 100 that pans the slide 0% to 100% of it's overflow.
+  * zoom^2^ - (integer or array: default 50) An integer, or range of integers as an array, from 0 to 100 that zooms the slide 1× to 2× of the size of the slideshow.
 
 ==== Examples: ====
 
@@ -40,6 +40,5 @@ var myShow = new Slideshow.KenBurns(element, data, options);
 
 ==== Notes: ====
 
-  * ^1^ There is no sub-pixel positioning in any 
-browser, so the quality of the panning is determined by how much the image will pan: an image that pans a lot (ie a panoramic image in a square slideshow) will animate smoother.
-  * ^2^ The zooming effect is very dependent on the operating system (ie Windows, Mac, Linux, etc) since the OS is what determines the resampling algorithm used by the browser. In general, any browser on Mac will scale much better.
+  * ^1^ There is no [http://ejohn.org/blog/sub-pixel-problems-in-css/ sub-pixel] positioning in any browser, so the quality of the panning is determined by how much the image will pan: an image that pans a lot (ie. a panoramic image in a square slideshow) will animate smoother.
+  * ^2^ The zooming effect is very dependent on the operating system (ie. Windows, Mac, Linux, etc) since the OS is what determines the resampling algorithm used by the browser. In general, any browser on Mac will scale much better.
