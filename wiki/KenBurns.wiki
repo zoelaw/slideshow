@@ -37,3 +37,8 @@ var myShow = new Slideshow.KenBurns(element, data, options);
   var myShow = new Slideshow.KenBurns('my_show', ['1.jpg', '2.jpg', '3.jpg'], {pan: 100, zoom: [25, 75]});
 </script>
 }}}
+
+==== Notes: ====
+
+  * ^1^ There is no sub-pixel position.
+  * ^2^ There is no sub-pixel position.
