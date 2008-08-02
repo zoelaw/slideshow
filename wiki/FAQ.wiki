@@ -42,3 +42,27 @@ Sure. You will just need to give each wrapper element it's own ID, and initializ
   var gustavo = new Slideshow('gustavo', ['1.jpg', '2.jpg', '3.jpg'], {height: 300, hu: 'gustavo/', width: 400});
 </script>
 }}}
+
+=== Why does Slideshow disappear in Internet Explorer? ===
+
+_While my slideshow works flawlessly in Safari and Firefox, both IE6 and IE7 do not display it properly. Instead, I merely see a brief "blip" of the default image, which then disappears, never to return._
+
+The problem often is a trailing comma in the list of pictures, for example:
+
+{{{
+var data = {
+  "img1.jpg":{caption:"Image 1"},
+  "img2.jpg":{caption:"Image 2"},
+};
+}}}
+
+In order to make it work in IE i just deleted the last comma and wrote it like this:
+
+{{{
+var data = {
+  "img1.jpg":{caption:"Image 1"},
+  "img2.jpg":{caption:"Image 2"}
+};
+}}}
+
+See the closing `}` after Image 2? No comma!
