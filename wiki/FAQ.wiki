@@ -58,7 +58,7 @@ var data = {
 };
 }}}
 
-In order to make it work in IE i just deleted the last comma and wrote it like this:
+In order to make it work in IE, just delete the last comma and write it like this:
 
 {{{
 var data = {
@@ -68,3 +68,46 @@ var data = {
 }}}
 
 See the closing `}` after Image 2? No comma!
+
+=== How can I resize the Slideshow? ===
+
+_I am having trouble resizing the div - I don't see it anywhere in the Slideshow CSS._
+
+Since height and width are attributes of the presentation, it is best to change these values in the stylesheet:
+
+{{{
+.slideshow-images {
+  height: 300px;
+  width: 400px;
+}
+}}}
+
+Slideshow will parse in these values on initialization and adjust the dimensions of the show accordingly. You can also do the same thing in reverse by setting the options in the Slideshow class:
+
+{{{
+new Slideshow('show', data, { height: 300, hu: 'images/', width: 400 });
+}}}
+
+The only difference is the show will only take those dimensions if Javascript is enabled. 
+
+Note: these attributes only affect the size of the "slides" or Slideshow images (more information [http://code.google.com/p/slideshow/wiki/HTML in the Wiki]):
+
+{{{
+<div class="slideshow">
+  <div class="slideshow-images">
+    <a><img /></a>
+  </div>
+ ...
+</div>
+}}}
+
+In order to affect the dimensions of the Slideshow wrapper (that contains the controller, captions, thumbnails, etc) you will need to set the following class in the stylesheet:
+
+{{{
+.slideshow {
+  height: 300px;
+  width: 400px;
+}
+}}}
+
+Accordingly, the size of the Slideshow images will not be affected.
