@@ -45,6 +45,8 @@ Sure. You will just need to give each wrapper element it's own ID, and initializ
 </script>
 }}}
 
+New! [http://www.electricprism.com/aeron/slideshow/example6.html See the example online].
+
 === Why does Slideshow disappear in Internet Explorer? ===
 
 _While my slideshow works flawlessly in Safari and Firefox, both IE6 and IE7 do not display it properly. Instead, I merely see a brief "blip" of the default image, which then disappears, never to return._
