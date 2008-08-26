@@ -90,9 +90,7 @@ Slideshow will parse in these values on initialization and adjust the dimensions
 new Slideshow('show', data, { height: 300, hu: 'images/', width: 400 });
 }}}
 
-The only difference is the show will only take those dimensions if Javascript is enabled. 
-
-Note: these attributes only affect the size of the "slides" or Slideshow images (more information [http://code.google.com/p/slideshow/wiki/HTML in the Wiki]):
+The only difference is the show will only take those dimensions if Javascript is enabled. Note: these attributes only affect the size of the "slides" or Slideshow images (more information [http://code.google.com/p/slideshow/wiki/HTML in the Wiki]):
 
 {{{
 <div class="slideshow">
