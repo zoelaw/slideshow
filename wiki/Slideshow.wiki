@@ -54,7 +54,7 @@ var myShow = new Slideshow(element, data, options);
 
 {{{
 var data = {
-  // In this case no thumbnail has been specified so Slideshow will attempt to generate the thumbnail filename from the image filename using the RegExp defined in the replace option
+  // In this case no thumbnail has been specified so Slideshow will generate the thumbnail filename from the image using the RegExp defined in the replace option
   '1.jpg': {
     caption: 'Keylin', 
     href: 'keylin.html'
