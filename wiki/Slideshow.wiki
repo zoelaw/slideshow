@@ -50,6 +50,29 @@ var myShow = new Slideshow(element, data, options);
 
 ==== Examples: ====
 
+  * Example A: example data object with all available parameters.
+
+{{{
+var data = {
+  // In this case no thumbnail has been specified so Slideshow will attempt to generate the thumbnail filename from the image filename using the RegExp defined in the replace option
+  '1.jpg': {
+    caption: 'Keylin', 
+    href: 'keylin.html'
+  },
+  // Here the image and thumbnail use the same filename but different directories and an example of captions with HTML
+  'images/2.jpg': {
+    caption: '<em>Gustavo</em>', 
+    href: 'gustavo.html',
+    thumbnail: 'thumbs/2.jpg'
+  },
+  // In this example the image and thumbnail use absolute filenames
+  'http://images.mysite.com/images/3.jpg': {
+    caption: 'Amalia',
+    thumbnail: 'http://images.mysite.com/thumbs/2.jpg'
+  }
+};
+}}}
+
   * Example 1: data passed in as an array; show is linked to a static url (href: 'portfolio.html').
 
 {{{
