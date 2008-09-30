@@ -114,6 +114,10 @@ Accordingly, the size of the Slideshow images will not be affected.
 
 === Why won't Slideshow work with Google Maps? ===
 
-_I load a page with Google Maps, Mootools 1.2 and Slideshow and initiate a Slideshow and a Map on their own DIVs and Firebug reports: `"A parameter or an operation is not supported by the underlying object" code: 15 /scripts/mootools_core.js Line 3162`?!_
+_I load a page with Google Maps, Mootools 1.2 and Slideshow and initiate a Slideshow and a Map on their own DIVs and Firebug reports:_
+
+{{{
+"A parameter or an operation is not supported by the underlying object" code: 15 /scripts/mootools_core.js Line 3162
+}}}
 
 This is a Google Maps issue. Simply loading the Maps CSS after the Javascript gives this error. Placing the CSS file before the Javascript was included fixed it.
