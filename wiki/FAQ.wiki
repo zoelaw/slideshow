@@ -122,7 +122,7 @@ _I load a page with Google Maps, Mootools 1.2 and Slideshow and initiate a Slide
 
 This is a Google Maps issue. Simply loading the Maps CSS after the Javascript gives this error. Placing the CSS file before the Javascript was included fixed it.
 
-=== When I use PNG images with an alpha channel the previous image can be seen behind the current one ===
+=== When I use PNG images with an alpha channel the previous image can be seen behind the current one? ===
 
 _I only want to see the current image - the previous image should be gone._
 
