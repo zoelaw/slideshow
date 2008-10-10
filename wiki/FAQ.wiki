@@ -71,6 +71,12 @@ var data = {
 
 See the closing `}` after Image 2? No comma!
 
+=== Why is Slideshow so slow to load in Internet Explorer 6? ===
+
+_My implementation of Slideshow takes about 30 seconds to load in IE6, while in every other browser (IE7, FF, Safari, etc) it loads very fast._
+
+The problem is if you are using the optional [http://code.google.com/p/slideshow/wiki/Slideshow#Options: loader] but the path to the loading image(s) is incorrect. In this case simply set `loader: false`.
+
 === How can I resize the Slideshow? ===
 
 _I am having trouble resizing the div - I don't see it anywhere in the Slideshow CSS._
