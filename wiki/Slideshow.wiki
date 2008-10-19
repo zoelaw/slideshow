@@ -33,7 +33,7 @@ var myShow = new Slideshow(element, data, options);
   * loader^1^ - (boolean or Fx options object: default object) Show the loader graphic for images being loaded.
   * loop - (boolean: default true) Should the show loop.
   * match - (regexp) A regular expression the class uses to parse the URL, will overwrite "slide" below, default looks for `?slide=n` where "n" would be the slide to start from.
-  * onStart, onComplete - (function) Events that are fired on the start or completion of a slide change.
+  * onStart, onComplete, onEnd - (function) Events that are fired on the start or completion of a slide change and at the end of a non-looping show.
   * overlap - (boolean: default true) Whether images overlap in the basic show, or if the first image transitions out before the second transitions in.
   * paused - (boolean: default false) Whether the show should start paused.
   * random - (boolean: default false) Random show, combined with thumbnails equals very cool!
