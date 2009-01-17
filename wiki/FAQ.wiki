@@ -1,7 +1,15 @@
 #summary Frequently Asked Questions
 #labels Featured
 
-  * [#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe How can I specify a directory for the thumbnail rather then appending a 't' to the image name?]
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe How can I specify a directory for the thumbnail rather then appending a 't' to the image name?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe OK, but what if the images and thumbs are in two separate folders?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe Is it possible to have multiple slideshows per page?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe Why does Slideshow disappear in Internet Explorer?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe Why is Slideshow so slow to load in Internet Explorer 6?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe How can I resize the Slideshow?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe Why won't Slideshow work with Google Maps?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe When I use PNG images with an alpha channel the previous image can be seen behind the current one?]====
+  * ====[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe Why aren't the Slideshow animations working correctly?]====
 
 === How can I specify a directory for the thumbnail rather then appending a 't' to the image name? ===
 
@@ -142,5 +150,5 @@ _Either the main image isn't appearing or the captions (loader, controller, etc)
 
 In this case there may be a problem that Mootools is unable to access the Slideshow stylesheet. This can happen for either of two reasons:
 
-  * You are using the `@import` method to import the Slideshow CSS. Unfortunately this method will not allow Mootools access to the stylesheet. In this case switch to using the traditional [http://www.w3.org/TR/REC-html40/present/styles.html#h-14.1 link tag] from within the head of the HTML document that contains the Slideshow instance.
-  * Your stylesheet is on a different domain (or subdomain) than the page which contains the Slideshow instance. Unfortunately security restrictions in Javascript will prevent Mootools from accessing the styleheet. You will need to move the slideshow.css to the same domain as the HTML document which contains the Slideshow instance or use a relative path (sorta the same thing).
+  * You are using _the `@import` method_ to import the Slideshow CSS. Unfortunately this method will not allow Mootools access to the stylesheet. In this case switch to using the traditional [http://www.w3.org/TR/REC-html40/present/styles.html#h-14.1 link tag] from within the head of the HTML document that contains the Slideshow instance.
+  * Your stylesheet is _on a different domain (or subdomain)_ than the page which contains the Slideshow instance. Unfortunately security restrictions in Javascript will prevent Mootools from accessing the styleheet. You will need to move the slideshow.css to the same domain as the HTML document which contains the Slideshow instance or use a relative path (sorta the same thing).
