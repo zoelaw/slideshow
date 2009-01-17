@@ -134,11 +134,11 @@ _I only want to see the current image - the previous image should be gone._
 
 Initialize Slideshow with the [http://code.google.com/p/slideshow/wiki/Slideshow#Options: overlap: false] option.
 
-=== Why aren't the Slideshow animations working properly? ===
+=== Why aren't the Slideshow animations working correctly? ===
 
-_Either the main image isn't appearing or the captions (loader, controller, etc) are not animating as I have specified in the Slideshow.css._
+_Either the main image isn't appearing or the captions (loader, controller, etc) are not animating as I have specified in the `slideshow.css`._
 
 In this case there may be a problem that Mootools is unable to access the Slideshow stylesheet. This can happen for either of two reasons:
 
-* You are using the `@import` method to import the Slideshow CSS. Unfortunately this method will not allow Mootools access to the stylesheet. In this case switch to using the traditional [http://www.w3.org/TR/REC-html40/present/styles.html#h-14.1 link tag] from within the head of the HTML document that contains the Slideshow instance.
-* Your stylesheet is on a different domain (or subdomain) than the page which contains the Slideshow instance. Unfortunately security restrictions in Javascript will prevent Mootools from accessing the CSS. You will need to move the stylesheet to the same domain as the document which contains the Slideshow instance or use a relative path (sorta the same thing).
+  * You are using the `@import` method to import the Slideshow CSS. Unfortunately this method will not allow Mootools access to the stylesheet. In this case switch to using the traditional [http://www.w3.org/TR/REC-html40/present/styles.html#h-14.1 link tag] from within the head of the HTML document that contains the Slideshow instance.
+  * Your stylesheet is on a different domain (or subdomain) than the page which contains the Slideshow instance. Unfortunately security restrictions in Javascript will prevent Mootools from accessing the styleheet. You will need to move the slideshow.css to the same domain as the HTML document which contains the Slideshow instance or use a relative path (sorta the same thing).
