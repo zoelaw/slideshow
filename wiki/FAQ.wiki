@@ -1,6 +1,8 @@
 #summary Frequently Asked Questions
 #labels Featured
 
+  * [#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe How can I specify a directory for the thumbnail rather then appending a 't' to the image name?]
+
 === How can I specify a directory for the thumbnail rather then appending a 't' to the image name? ===
 
 _For example, the full-size image is "1.jpg" and the thumbnail "thumbs/1.jpg"._
