@@ -1,15 +1,15 @@
 #summary Frequently Asked Questions
 #labels Featured
 
-  *[#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe How can I specify a directory for the thumbnail rather then appending a 't' to the image name?]
-  *[#OK,_but_what_if_the_images_and_thumbs_are_in_two_separate_folder OK, but what if the images and thumbs are in two separate folders?]
-  *[#Is_it_possible_to_have_multiple_slideshows_per_page? Is it possible to have multiple slideshows per page?]
-  *[#Why_does_Slideshow_disappear_in_Internet_Explorer? Why does Slideshow disappear in Internet Explorer?]
-  *[#Why_is_Slideshow_so_slow_to_load_in_Internet_Explorer_6? Why is Slideshow so slow to load in Internet Explorer 6?]
-  *[#How_can_I_resize_the_Slideshow? How can I resize the Slideshow?]
-  *[#Why_won&#x27;t_Slideshow_work_with_Google_Maps? Why won't Slideshow work with Google Maps?]
-  *[#When_I_use_PNG_images_with_an_alpha_channel_the_previous_image_c When I use PNG images with an alpha channel the previous image can be seen behind the current one?]
-  *[#Why_aren&#x27;t_the_Slideshow_animations_working_correctly? Why aren't the Slideshow animations working correctly?]
+  * [#How_can_I_specify_a_directory_for_the_thumbnail_rather_then_appe How can I specify a directory for the thumbnail rather then appending a 't' to the image name?]
+  * [#OK,_but_what_if_the_images_and_thumbs_are_in_two_separate_folder OK, but what if the images and thumbs are in two separate folders?]
+  * [#Is_it_possible_to_have_multiple_slideshows_per_page? Is it possible to have multiple slideshows per page?]
+  * [#Why_does_Slideshow_disappear_in_Internet_Explorer? Why does Slideshow disappear in Internet Explorer?]
+  * [#Why_is_Slideshow_so_slow_to_load_in_Internet_Explorer_6? Why is Slideshow so slow to load in Internet Explorer 6?]
+  * [#How_can_I_resize_the_Slideshow? How can I resize the Slideshow?]
+  * [#Why_won&#x27;t_Slideshow_work_with_Google_Maps? Why won't Slideshow work with Google Maps?]
+  * [#When_I_use_PNG_images_with_an_alpha_channel_the_previous_image_c When I use PNG images with an alpha channel the previous image can be seen behind the current one?]
+  * [#Why_aren&#x27;t_the_Slideshow_animations_working_correctly? Why aren't the Slideshow animations working correctly?]
 
 === How can I specify a directory for the thumbnail rather then appending a 't' to the image name? ===
 
