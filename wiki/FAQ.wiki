@@ -1,6 +1,8 @@
 #summary Frequently Asked Questions
 #labels Featured
 
+== Looking for help? Please post your questions to the [http://groups.google.com/group/mootools-slideshow Slideshow Google Group]! ==
+
 <wiki:toc max_depth="3" />
 
 === How can I specify a directory for the thumbnail rather then appending a 't' to the image name? ===
@@ -149,4 +151,4 @@ In this case there may be a problem that Mootools is unable to access the Slides
 
 _[http://forum.mootools.net/viewtopic.php?id=1673&p=3#post-17571 Great tool but IE performance suffers a little too much for me to use it for professional work]._
 
-Here's the low down: the performance has nothing to do with IE - it's an OS thing. The browsers use the OS for resizing imagery and writing to the GFX card. The problem is the OS resampling is horrible for Windows (even Vista) and Linux (at least in Ubuntu). On those operating systems - regardless of whether you're using Explorer, Opera, Mozilla - the scaling of the images looks terrible. I don't know what algorithm they use for resampling - it looks like nearest neighbor - but it just looks bad. BTW I had no idea it was an OS thing when I developed this on a Mac - which uses bicubic resampling as far as I can tell and looks great in all browsers - so I was very disappointed when I first tried this on different systems. Also horizontal / vertical positioning of images is never sub-pixel so it will never look entirely smooth if you use the panning options. I really tried to get this to look better in IE - I event tried using Explorer's proprietary methods such as Zoom - but it looks the same. So what is there to do? Perhaps re-coding the zooming/panning to use the browser Canvas - however that would add a lot of overhead to the script and, of course, there is not Canvas in IE. If you want a better looking Ken Burns Effect across platforms try Monoslideshow?!
+This has been fixed for IE7 since r131 - get the [http://code.google.com/p/slideshow/downloads/list latest version here]. Unfortunately there doesn't appear to be any fix for IE6. However at the moment the Slideshow should look awesome on IE7/8, Firefox 3+, Chrome/Safari and any Mac browser!
