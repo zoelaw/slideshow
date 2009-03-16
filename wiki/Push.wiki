@@ -1,6 +1,10 @@
 #summary Documentation
 #labels Phase-Implementation
 
+*Looking for help? Please post your questions to the [http://groups.google.com/group/mootools-slideshow Slideshow Google Group]!*
+
+<wiki:toc max_depth="3" />
+
 ==== Extends: ====
 
 [http://code.google.com/p/slideshow/wiki/Slideshow Slideshow]
