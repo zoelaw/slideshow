@@ -151,4 +151,4 @@ In this case there may be a problem that Mootools is unable to access the Slides
 
 _[http://forum.mootools.net/viewtopic.php?id=1673&p=3#post-17571 Great tool but IE performance suffers a little too much for me to use it for professional work]._
 
-This has been fixed for IE7 since r131 - get the [http://code.google.com/p/slideshow/downloads/list latest version here]. Unfortunately there doesn't appear to be any fix for IE6. However at the moment the Slideshow should look awesome on IE7/8, Firefox 3+, Chrome/Safari and any Mac browser!
+This has been fixed for IE7 since revision 131 - get the [http://code.google.com/p/slideshow/downloads/list latest version here]. Unfortunately there doesn't appear to be any fix for IE6. However at the moment the Slideshow should look awesome on IE7/8, Firefox 3+, Chrome/Safari and any Mac browser!
