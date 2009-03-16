@@ -3,6 +3,8 @@
 
 *Looking for help? Please post your questions to the [http://groups.google.com/group/mootools-slideshow Slideshow Google Group]!*
 
+<wiki:toc max_depth="3" />
+
 === Method: constructor ===
 
 Creates an instance of the Slideshow class. Applied to an existing element(s) in the HTML. Can parse in existing images, alt attributes, thumbnails, etc. or create as necessary.
