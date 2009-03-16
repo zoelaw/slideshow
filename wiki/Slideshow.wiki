@@ -1,5 +1,7 @@
-#summary Documentation
 #labels Featured,Phase-Implementation
+=== Looking for help? Please post your questions to the [http://groups.google.com/group/mootools-slideshow Slideshow Google Group]! ===
+
+#summary Documentation
 
 === Method: constructor ===
 
