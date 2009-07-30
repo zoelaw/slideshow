@@ -772,15 +772,20 @@ Slideshow = new Class({
           var li = thumbnails.getElement('li:nth-child(' + (i + 1) + ')').getCoordinates();
           var n = Math.floor(div[width] / li[width]); // number of rows or columns
           var x = Math.ceil(this.data.images.length / n); // number of images per row or column
+          var r = this.data.images.length % n; // remainder
           var len = x * li[length]; // length of a single row or column
           var ul = thumbnails.getElement('ul').setStyle(length, len);
           var lis = ul.getElements('li').setStyles({'height': li.height, 'width': li.width});
-          if (this.options.thumbnails.scroll == 'y'){
+          if (this.options.thumbnails.scroll == 'y'){ // for vertical scrolling we have to resort the thumbnails in the container
             ul.innerHTML = '';
+            var counter = this.data.images.length;
             for (var i = 0; i < x; i++){
               for (var j = 0; j < n; j++){
-                var li = lis[i + (x * j)];
-                if (li) li.inject(ul);
+                if (!counter) break;
+                counter--;
+                var m = i + (x * j);
+                if (j > r) m -= (j - r);
+                lis[m].inject(ul);
               }
             }
           }
