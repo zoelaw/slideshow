@@ -32,7 +32,7 @@ Slideshow = new Class({
     href: '',
     hu: '',
     linked: false,
-    loader: {'animate': true, 'frames': 12},
+    loader: true,
     loop: true,
     match: /\?slide=(\d+)$/,
     overlap: true,
