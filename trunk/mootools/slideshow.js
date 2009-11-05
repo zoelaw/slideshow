@@ -116,7 +116,7 @@ Slideshow = new Class({
         obj.key = obj.key.replace(re, '');
       });
       accesskey.key = obj.key.trim();
-    });
+    }, this);
 
     this.events.push('keyup', function(e){
       this.accesskeys.each(function(accesskey, action){
@@ -146,6 +146,12 @@ Slideshow = new Class({
       });
     }
 
+    // load data
+    
+    var loaded = this.load(data);
+    if (!loaded)
+      return;     
+
     // required elements
       
     var el = this.slideshow.getElement(this.classes.get('images'));
@@ -161,6 +167,15 @@ Slideshow = new Class({
     });
     this.slideshow.store('images', images);
     
+    this.a = this.image = this.slideshow.getElement('img') || new Element('img');
+    if (Browser.Engine.trident && Browser.Engine.version > 4)
+      this.a.style.msInterpolationMode = 'bicubic';
+    this.a.set({'aria-hidden': false, 'styles': {'display': 'none', 'position': 'absolute', 'zIndex': 1}});
+    this.b = this.a.clone();
+    [this.a, this.b].each(function(img){
+      anchor.clone().cloneEvents(anchor).grab(img).inject(images);
+    });    
+      
     // optional elements
     
     if (this.options.captions)
@@ -171,16 +186,6 @@ Slideshow = new Class({
        this._loader();
     if (this.options.thumbnails)
       this._thumbnails();
-      
-    // this.a = this.image = this.slideshow.getElement('img') || new Element('img');
-    // if (Browser.Engine.trident && Browser.Engine.version > 4)
-    //   this.a.style.msInterpolationMode = 'bicubic';
-    // this.a.set({'aria-hidden': false, 'styles': {'display': 'none', 'position': 'absolute', 'zIndex': 1}});
-    // this.b = this.a.clone();
-    // [this.a, this.b].each(function(img){
-    //   anchor.clone().cloneEvents(anchor).grab(img).inject(images);
-    // });
-    
       
     // setup first slide  
       
@@ -193,12 +198,6 @@ Slideshow = new Class({
         this.slide = match[1] % this.data.images.length;
     }
 
-    // load data
-    
-    var loaded = this.load(data);
-    if (!loaded)
-      return;     
-
     // begin show
     
     this._preload();
@@ -210,6 +209,7 @@ Slideshow = new Class({
 
   Arguments:
     n - (integer) The index number of the image to jump to, 0 being the first image in the show.
+    direction - (string) The direction the slideshow animates, either right or left.
   
   Syntax:
     myShow.go(n);  
@@ -244,6 +244,9 @@ Slideshow = new Class({
   Public method: prev
     Goes to the previous image in the show.
 
+ Arguments:
+   first - (undefined or true) Go to first frame instead of previous.
+ 
   Syntax:
     myShow.prev();  
   */
@@ -312,6 +315,9 @@ Slideshow = new Class({
   /**
   Public method: next
     Goes to the next image in the show.
+
+  Arguments:
+    last - (undefined or true) Go to last frame instead of next.
 
   Syntax:
     myShow.next();  
@@ -422,13 +428,16 @@ Slideshow = new Class({
   /**
   Private method: preload
     Preloads the next slide in the show, once loaded triggers the show, updates captions, thumbnails, etc.
+    
+  Arguments:
+    fast - (boolean) Whether the slideshow operates in fast-mode or not.
   */
 
   _preload: function(fast){
     if (!this.preloader)
        this.preloader = new Asset.image(this.options.hu + this.data.images[this.slide], {
         'onerror': function(){
-          ['images', 'captions', 'hrefs', 'titles'].each(function(key){
+          ['images', 'captions', 'hrefs', 'properties', 'titles'].each(function(key){
             this.data[key].splice(this.slide, 1);
           }, this);
           if (this.options.thumbnails && this.slideshow.retrieve('thumbnails')){
@@ -488,6 +497,9 @@ Slideshow = new Class({
   /**
   Private method: show
     Does the slideshow effect.
+
+  Arguments:
+    fast - (boolean) Whether the slideshow operates in fast-mode or not.
   */
 
   _show: function(fast){
@@ -511,7 +523,7 @@ Slideshow = new Class({
       else  {
         var fn1 = function(img, hidden, visible){
           img.set({'aria-busy': false, 'aria-hidden': true});
-          this.image.set({'aria-busy': true).get('morph').set(hidden).start(visible);
+          this.image.set({'aria-busy': true}).get('morph').set(hidden).start(visible);
         }.pass([img, hidden, visible], this);
         var fn2 = function(){
           this.image.set({'aria-busy': false, 'aria-hidden': false});
@@ -557,6 +569,9 @@ Slideshow = new Class({
   /**
   Private method: center
     Center an image.
+
+  Arguments:
+    img - (element) Image that the transform is applied to.
   */
 
   _center: function(img){
@@ -569,6 +584,9 @@ Slideshow = new Class({
   /**
   Private method: resize
     Resizes an image.
+
+  Arguments:
+    img - (element) Image that the transform is applied to.
   */
 
   _resize: function(img){
@@ -744,7 +762,7 @@ Slideshow = new Class({
             loader.store('animate', 'x').store('frames', (w / size.x).toInt());
           else if (h > size.y)
             loader.store('animate', 'y').store('frames', (h / size.y).toInt());
-          else if (img.test(/\d+/)
+          else if (img.test(/\d+/))
             loader.store('animate', url).store('frames', 1).fireEvent('preload');
         }});
       }
@@ -777,7 +795,7 @@ Slideshow = new Class({
       'preload': function(){
         var loader = this.slideshow.retrieve('loader'), url = loader.retrieve('animate');
         var url = url.split('/'), img = url.pop().replace(/\d+/, loader.retrieve('frames') + 1), url = url.push(img).join('/');
-        new Asset.image(url), {'onload': function(){
+        new Asset.image(url, {'onload': function(){
           this.store('frames', this.retrieve('frames') + 1).fireEvent('preload');
         }.bind(loader) });
       }.bind(this),
