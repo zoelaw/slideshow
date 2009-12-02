@@ -152,3 +152,9 @@ In this case there may be a problem that Mootools is unable to access the Slides
 _[http://forum.mootools.net/viewtopic.php?id=1673&p=3#post-17571 Great tool but IE performance suffers a little too much for me to use it for professional work]._
 
 This has been fixed for IE7 since rev 131 - get the [http://code.google.com/p/slideshow/downloads/list latest version here]. Unfortunately there doesn't appear to be any fix for IE6. However at the moment the Slideshow should look awesome on IE7/8, Firefox 3+, Chrome/Safari and any Mac browser!
+
+=== Why can I not see anything? ===
+
+_I get the error: Asset is not defined_
+
+If you are using Slideshow with a different version of Mootools than the one included with the class, be sure to also add the [http://www.mootools.net/more#Assets Assets Utility]. Slideshow requires the Assets utility to stream in images and will not work without it.
