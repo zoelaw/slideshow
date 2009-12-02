@@ -157,4 +157,4 @@ This has been fixed for IE7 since rev 131 - get the [http://code.google.com/p/sl
 
 _I get the error: Asset is not defined_
 
-If you are using Slideshow with a different version of Mootools than the one included with the class, be sure to also add the [http://www.mootools.net/more#Assets Assets Utility]. Slideshow requires the Assets utility to stream in images and will not work without it.
+If you are using Slideshow with a different version of Mootools than the one included with the class, be sure to also add the [http://www.mootools.net/more#Assets Assets utility]. Slideshow requires the Assets utility to stream in images and will not work without it.
