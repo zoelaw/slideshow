@@ -1,7 +1,7 @@
 #summary Documentation
 #labels Featured,Phase-Implementation
 
-=== Looking for help? Please post your questions to the [http://groups.google.com/group/mootools-slideshow Slideshow Google Group]! ===
+== Looking for help? Please post your questions to the [http://groups.google.com/group/mootools-slideshow Slideshow Google Group]! ==
 
 <wiki:toc max_depth="3" />
 
