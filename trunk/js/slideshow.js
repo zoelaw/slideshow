@@ -460,7 +460,7 @@ Slideshow = new Class({
           this.store('loaded', true);
         }
       });  
-    if (this.preloader.retrieve('loaded') && $time() > this.delay && $time() > this.transition){
+    if (this.preloader.retrieve('loaded') && this.preloader.get('width') && $time() > this.delay && $time() > this.transition){
       if (this.stopped){
         if (this.options.captions)
           this.slideshow.retrieve('captions').get('morph').cancel().start(this.classes.get('captions', 'hidden'));
@@ -476,7 +476,7 @@ Slideshow = new Class({
         this.image.set(prop, this.preloader.get(prop));
       }, this);
       this._resize(this.image);
-      this._center(this.image);
+      this._center(this.image,this.preloader.get('width'),this.preloader.get('height'));
       var anchor = this.image.getParent();
       if (this.data.hrefs[this.slide])
         anchor.set('href', this.data.hrefs[this.slide])
@@ -583,9 +583,8 @@ Slideshow = new Class({
     img - (element) Image that the transform is applied to.
   */
 
-  _center: function(img){
+  _center: function(img,w,h){
     if (this.options.center){
-      var h = img.get('height'), w = img.get('width');
       img.set('styles', {'left': (w - this.width) / -2, 'top': (h - this.height) / -2});
     }
   },
