@@ -375,7 +375,7 @@ Private method: preload
 		 	this.preloader = new Asset.image(this.options.hu + this.data.images[this.slide], {'onload': function(){
 				this.store('loaded', true);
 			}});	
-		if (this.preloader.retrieve('loaded') && $time() > this.delay && $time() > this.transition){
+		if (this.preloader.retrieve('loaded') && this.preloader.get('width') && $time() > this.delay && $time() > this.transition){
 			if (this.stopped){
 				if (this.options.captions)
 					this.slideshow.retrieve('captions').get('morph').cancel().start(this.classes.get('captions', 'hidden'));
@@ -391,7 +391,7 @@ Private method: preload
 				this.image.set(prop, this.preloader.get(prop));
 			}, this);
 			this._resize(this.image);
-			this._center(this.image);
+			this._center(this.image,this.preloader.get('width'),this.preloader.get('height'));
 			var anchor = this.image.getParent();
 			if (this.data.hrefs[this.slide])
 				anchor.set('href', this.data.hrefs[this.slide]);			
@@ -488,10 +488,9 @@ Private method: center
 	Center an image.
 */
 
-	_center: function(img){
+	_center: function(img,w,h){
 		if (this.options.center){
-			var size = img.getSize();
-			img.set('styles', {'left': (size.x - this.width) / -2, 'top': (size.y - this.height) / -2});
+			img.set('styles', {'left': (w - this.width) / -2, 'top': (h - this.height) / -2});
 		}
 	},
 
