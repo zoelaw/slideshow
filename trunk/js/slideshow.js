@@ -39,7 +39,7 @@ Slideshow = new Class({
 		properties: ['href', 'rel', 'rev', 'title'],
 		random: false,
 		replace: [/(\.[^\.]+)$/, 't$1'],
-		resize: 'width',
+		resize: 'fill',
 		slide: 0,
 		thumbnails: false,
 		titles: true,
@@ -500,14 +500,21 @@ Private method: resize
 */
 
 	_resize: function(img){
-		if (this.options.resize){
+		var resize = this.options.resize;
+		if (resize){
 			var h = this.preloader.get('height'), w = this.preloader.get('width');
-			var dh = this.height / h, dw = this.width / w, d;
-			if (this.options.resize == 'length')
-				d = (dh > dw) ? dw : dh;
-			else
-				d = (dh > dw) ? dh : dw;
-			img.set('styles', {height: Math.ceil(h * d), width: Math.ceil(w * d)});
+			var dh = this.height / h, dw = this.width / w, d1, d2;
+			if (resize == 'fit'){
+				d1 = (dh > dw) ? dw : dh;
+				d2 = d1;
+			} else if (resize == 'fill') {
+				d1 = (dh > dw) ? dh : dw;
+				d2 = d1;
+			} else {
+				d1 = dh;
+				d2 = dw;
+			}
+			img.set('styles', {height: Math.ceil(h * d1), width: Math.ceil(w * d2)});
 		}	
 	},
 
