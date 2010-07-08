@@ -391,7 +391,7 @@ Private method: preload
 				this.image.set(prop, this.preloader.get(prop));
 			}, this);
 			this._resize(this.image);
-			this._center(this.image,this.image.getStyle('width').toInt(),this.image.getStyle('height').toInt());
+			this._center(this.image,this.image.get('width'),this.image.get('height'));
 			var anchor = this.image.getParent();
 			if (this.data.hrefs[this.slide])
 				anchor.set('href', this.data.hrefs[this.slide]);			
