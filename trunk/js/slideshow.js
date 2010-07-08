@@ -391,7 +391,7 @@ Private method: preload
 				this.image.set(prop, this.preloader.get(prop));
 			}, this);
 			this._resize(this.image);
-			this._center(this.image,this.image.get('width'),this.image.get('height'));
+			this._center(this.image,this.image.getStyle('width'),this.image.getStyle('height'));
 			var anchor = this.image.getParent();
 			if (this.data.hrefs[this.slide])
 				anchor.set('href', this.data.hrefs[this.slide]);			
@@ -501,9 +501,10 @@ Private method: resize
 
 	_resize: function(img){
 		var resize = this.options.resize;
+		var h = img.get('height'), w = img.get('width');
+		var d1 = d2 = 1;
 		if (resize){
-			var h = this.preloader.get('height'), w = this.preloader.get('width');
-			var dh = this.height / h, dw = this.width / w, d1, d2;
+			var dh = this.height / h, dw = this.width / w;
 			if (resize == 'fit'){
 				d1 = (dh > dw) ? dw : dh;
 				d2 = d1;
@@ -514,8 +515,8 @@ Private method: resize
 				d1 = dh;
 				d2 = dw;
 			}
-			img.set('styles', {height: Math.ceil(h * d1), width: Math.ceil(w * d2)});
-		}	
+		}
+		img.set('styles', {height: Math.ceil(h * d1), width: Math.ceil(w * d2)});
 	},
 
 /**
