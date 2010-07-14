@@ -81,7 +81,8 @@ Private method: show
 		}, this);
 		var paused = (this.firstrun && this.options.paused);
 		if (fast || paused){
-			this._center(this.image);
+			var size = this.image.getSize();
+			this._center(this.image,size.x,size.y);
 			this.image.get('morph').cancel();
 			if (paused)
 				this.image.get('tween').cancel().set(0).start(1);
