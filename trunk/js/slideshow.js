@@ -391,8 +391,7 @@ Private method: preload
 				this.image.set(prop, this.preloader.get(prop));
 			}, this);
 			this._resize(this.image);
-			var size = this.image.getSize();
-			this._center(this.image,size.x,size.y);
+			this._center(this.image);
 			var anchor = this.image.getParent();
 			if (this.data.hrefs[this.slide])
 				anchor.set('href', this.data.hrefs[this.slide]);			
@@ -491,6 +490,9 @@ Private method: center
 
 	_center: function(img,w,h){
 		if (this.options.center){
+			var size = this.image.getSize();
+			var w = size.x;
+			var h = size.y;
 			img.set('styles', {'left': (w - this.width) / -2, 'top': (h - this.height) / -2});
 		}
 	},
