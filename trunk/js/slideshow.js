@@ -310,16 +310,18 @@ Syntax:
 			this.options.captions = false;			
 			data = new Array(data.length).associate(data.map(function(image, i){ return image + '?' + i })); 
 		}
-		this.data = {'images': [], 'captions': [], 'hrefs': [], 'thumbnails': []};
+		this.data = {'images': [], 'captions': [], 'hrefs': [], 'thumbnails': [], 'targets': []};
 		for (var image in data){
 			var obj = data[image] || {};
 			var caption = (obj.caption) ? obj.caption.trim() : '';
 			var href = (obj.href) ? obj.href.trim() : ((this.options.linked) ? this.options.hu + image : this.options.href);
 			var thumbnail = (obj.thumbnail) ? obj.thumbnail.trim() : image.replace(this.options.replace[0], this.options.replace[1]);
+			var target = (obj.target) ? obj.target.trim() : '_self';
 			this.data.images.push(image);
 			this.data.captions.push(caption);
 			this.data.hrefs.push(href);
 			this.data.thumbnails.push(thumbnail);
+			this.data.targets.push(target);
 		}
 		if (this.options.random)
 			this.slide = $random(0, this.data.images.length - 1);
@@ -393,10 +395,13 @@ Private method: preload
 			this._resize(this.image);
 			this._center(this.image);
 			var anchor = this.image.getParent();
-			if (this.data.hrefs[this.slide])
-				anchor.set('href', this.data.hrefs[this.slide]);			
-			else
+			if (this.data.hrefs[this.slide]) {
+				anchor.set('href', this.data.hrefs[this.slide]);
+				anchor.set('target', this.data.targets[this.slide]);			
+			} else {
 				anchor.erase('href');
+				anchor.erase('target');
+			}
 			var text = (this.data.captions[this.slide])
 				? this.data.captions[this.slide].replace(/<.+?>/gm, '').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, "'") 
 				: '';
