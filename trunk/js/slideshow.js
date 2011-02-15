@@ -377,7 +377,7 @@ Private method: preload
 		 	this.preloader = new Asset.image(this.options.hu + this.data.images[this.slide], {'onload': function(){
 				this.store('loaded', true);
 			}});	
-		if (this.preloader.retrieve('loaded') && this.preloader.get('width') && $time() > this.delay && $time() > this.transition){
+		if (this.preloader.retrieve('loaded') && $time() > this.delay && $time() > this.transition){
 			if (this.stopped){
 				if (this.options.captions)
 					this.slideshow.retrieve('captions').get('morph').cancel().start(this.classes.get('captions', 'hidden'));
@@ -395,13 +395,10 @@ Private method: preload
 			this._resize(this.image);
 			this._center(this.image);
 			var anchor = this.image.getParent();
-			if (this.data.hrefs[this.slide]) {
-				anchor.set('href', this.data.hrefs[this.slide]);
-				anchor.set('target', this.data.targets[this.slide]);			
-			} else {
-				anchor.erase('href');
-				anchor.erase('target');
-			}
+			if (this.data.hrefs[this.slide])
+				anchor.set({ 'href': this.data.hrefs[this.slide], 'target': this.data.targets[this.slide] });			
+			else
+				anchor.erase('href');				
 			var text = (this.data.captions[this.slide])
 				? this.data.captions[this.slide].replace(/<.+?>/gm, '').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, "'") 
 				: '';
@@ -446,11 +443,14 @@ Private method: show
 				img.get('morph').set(visible);
 				this.image.get('morph').set(hidden).start(visible);
 			} 
-			else	{
+			else {
 				var fn = function(hidden, visible){
-					this.image.get('morph').set(hidden).start(visible);
+					this.image.get('morph').start(visible);
 				}.pass([hidden, visible], this);
 				hidden = this.classes.get('images', ((this.direction == 'left') ? 'prev' : 'next'));
+				if (this.firstrun)
+					return fn();
+				this.image.get('morph').set(hidden);				
 				img.get('morph').set(visible).start(hidden).chain(fn);
 			}
 		}
@@ -493,11 +493,10 @@ Private method: center
 	Center an image.
 */
 
-	_center: function(img,w,h){
+	_center: function(img){
 		if (this.options.center){
-			var size = img.getSize();
-			var w = size.x;
-			var h = size.y;
+			var size = img.getSize(), 
+				h = size.y, w = size.x; 
 			img.set('styles', {'left': (w - this.width) / -2, 'top': (h - this.height) / -2});
 		}
 	},
@@ -508,23 +507,16 @@ Private method: resize
 */
 
 	_resize: function(img){
-		var resize = this.options.resize;
-		var h = img.get('height'), w = img.get('width');
-		var d1 = d2 = 1;
-		if (resize){
-			var dh = this.height / h, dw = this.width / w;
-			if (resize == 'fit'){
-				d1 = (dh > dw) ? dw : dh;
-				d2 = d1;
-			} else if (resize == 'fill') {
-				d1 = (dh > dw) ? dh : dw;
-				d2 = d1;
-			} else {
-				d1 = dh;
-				d2 = dw;
-			}
-		}
-		img.set('styles', {height: Math.ceil(h * d1), width: Math.ceil(w * d2)});
+		if (this.options.resize){
+			var size = img.getSize(),
+				h = size.y, w = size.x,
+				dh = this.height / h, dw = this.width / w;
+			if (this.options.resize == 'fit')
+				dh = dw = dh > dw ? dw : dh;
+			if (this.options.resize == 'fill')
+				dh = dw = dh > dw ? dh : dw;
+			img.set('styles', {'height': Math.ceil(h * dh), 'width': Math.ceil(w * dw)});
+		}	
 	},
 
 /**
@@ -543,9 +535,9 @@ Private method: complete
 
 	_complete: function(){
 		if (this.firstrun && this.options.paused){
-			this.firstrun = false;
 			this.pause(1);
 		}
+		this.firstrun = false;
 		this.fireEvent('complete');
 	},
 
@@ -674,42 +666,54 @@ Private method: loader
  		if (this.options.loader === true) 
  			this.options.loader = {};
 		var loader = new Element('div', {
+			'aria-hidden': false,
 			'class': this.classes.get('loader').substr(1),				
-			'morph': $merge(this.options.loader, {'link': 'cancel'})
-		}).store('hidden', false).store('i', 1).inject(this.slideshow.retrieve('images'));
-		if (this.options.loader.animate){
-			for (var i = 0; i < this.options.loader.animate[1]; i++)
-				img = new Asset.image(this.options.loader.animate[0].replace(/#/, i));
-			if (Browser.Engine.trident4 && this.options.loader.animate[0].contains('png'))
-				loader.setStyle('backgroundImage', 'none');					
+			'morph': $merge(this.options.loader, {'link': 'cancel'}),
+			'role': 'progressbar'
+		}).store('animate', false).store('i', 0).inject(this.slideshow.retrieve('images'));
+		var url = loader.getStyle('backgroundImage').replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+		if (url){
+			if (url.test(/\.png$/)){
+				if (Browser.Engine.trident4)
+					loader.setStyles({'backgroundImage': 'none', 'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + url + '", sizingMethod="crop")'});					
+				new Asset.image(url, {'onload': function(){
+					var size = loader.getSize(), w = this.get('width'), h = this.get('height');
+					if (w > size.x)
+						loader.store('x', size.x).store('animate', 'x').store('frames', (w / size.x).toInt());
+					if (h > size.y)
+						loader.store('y', size.y).store('animate', 'y').store('frames', (h / size.y).toInt());
+				}});
+			}
 		}
 		loader.set('events', {
 			'animate': function(){  
-				var loader = this.slideshow.retrieve('loader');				
-				var i = (loader.retrieve('i').toInt() + 1) % this.options.loader.animate[1];
-				loader.store('i', i);
-				var img = this.options.loader.animate[0].replace(/#/, i);
-				if (Browser.Engine.trident4 && this.options.loader.animate[0].contains('png'))
-					loader.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + img + '", sizingMethod="scale")';
-				else 
-					loader.setStyle('backgroundImage', 'url(' + img + ')');
-			}.bind(this),
-			'hide': function(){  
-				var loader = this.slideshow.retrieve('loader');
-				if (!loader.retrieve('hidden')){
-					loader.store('hidden', true).morph(this.classes.get('loader', 'hidden'));
-					if (this.options.loader.animate)
-						$clear(loader.retrieve('timer'));					
+				var animate = this.retrieve('animate');
+				if (!animate)
+					return;
+				var i = (this.retrieve('i').toInt() + 1) % this.retrieve('frames');
+				this.store('i', i);
+				var n = (i * this.retrieve(animate)) + 'px';
+				if (animate == 'x')
+					this.setStyle('backgroundPosition', n + ' 0px');			
+				if (animate == 'y')
+					this.setStyle('backgroundPosition', '0px ' + n);			
+			}.bind(loader),
+			'hide': function(hidden){  
+				if (this.get('aria-hidden') == 'false'){
+					this.set('aria-hidden', true).morph(hidden);
+					if (this.retrieve('animate'))
+						clearTimeout(this.retrieve('timer'));
 				}
-			}.bind(this),
-			'show': function(){  
-				var loader = this.slideshow.retrieve('loader');
-				if (loader.retrieve('hidden')){
-					loader.store('hidden', false).morph(this.classes.get('loader', 'visible'));
-					if (this.options.loader.animate)
-						loader.store('timer', function(){this.fireEvent('animate');}.periodical(50, loader));
+			}.pass(this.classes.get('loader', 'hidden'), loader),
+			'show': function(visible){  
+				if (this.get('aria-hidden') == 'true'){
+					this.set('aria-hidden', false).morph(visible);
+					if (this.retrieve('animate'))
+						this.store('timer', function(){ 
+							this.fireEvent('animate') 
+						}.periodical(50, this));			
 				}
-			}.bind(this)
+			}.pass(this.classes.get('loader', 'visible'), loader)
 		});
 		this.slideshow.retrieve('loader', loader).fireEvent('hide');
 	},

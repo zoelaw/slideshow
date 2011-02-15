@@ -1,3 +1,17 @@
+/*
+Script: mootools.js
+	MooTools - My Object Oriented JavaScript Tools.
+
+License:
+	MIT-style license.
+
+Copyright:
+	Copyright (c) 2006-2011 [Valerio Proietti](http://mad4milk.net/).
+
+Code & Documentation:
+	[The MooTools production team](http://mootools.net/developers/).
+*/
+
 var MooTools={version:"1.2.4",build:"0d9113241a90b9cd5643b926795852a2026710d4"},Native=function(a){a=a||{};var b=a.name,c=a.legacy,d=a.protect,f=a.implement,i=a.generics,g=a.initialize,j=a.afterImplement||function(){};a=g||c;i=i!==false;a.constructor=Native;a.$family={name:"native"};if(c&&g)a.prototype=c.prototype;a.prototype.constructor=a;if(b){b=b.toLowerCase();a.prototype.$family={name:b};Native.typize(a,b)}var l=function(e,h,k,m){if(!d||m||!e.prototype[h])e.prototype[h]=k;i&&Native.genericize(e,
 h,d);j.call(e,h,k);return e};a.alias=function(e,h,k){if(typeof e=="string")if(e=this.prototype[e])return l(this,h,e,k);for(var m in e)this.alias(m,e[m],h);return this};a.implement=function(e,h,k){if(typeof e=="string")return l(this,e,h,k);for(var m in e)l(this,m,e[m],h);return this};f&&a.implement(f);return a};Native.genericize=function(a,b,c){if((!c||!a[b])&&typeof a.prototype[b]=="function")a[b]=function(){var d=Array.prototype.slice.call(arguments);return a.prototype[b].apply(d.shift(),d)}};
 Native.implement=function(a,b){for(var c=0,d=a.length;c<d;c++)a[c].implement(b)};Native.typize=function(a,b){if(!a.type)a.type=function(c){return $type(c)===b}};
