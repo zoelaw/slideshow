@@ -42,7 +42,7 @@ var myShow = new Slideshow(element, data, options);
   * paused - (boolean: default false) Whether the show should start paused.
   * random - (boolean: default false) Random show, combined with thumbnails equals very cool!
   * replace - (array) An array, consisting of a regular expression pattern and a string replacement, for building thumbnail filenames based on the name of the original image, default appends a "t" to the image filename before the extension.
-  * resize - (boolean or string: default "width") Whether the show should attempt to resize images, based on the shortest side (default) or longest side ("length"). Set to false to disable image resizing.
+  * resize - (boolean or string: default "fill") Whether the show should attempt to resize images, based on the shortest side (default) or longest side ("fit") or resize without preserving proportions ("stretch"). Set to false to disable image resizing.
   * slide - (integer: default 0) Slide from which to start the show.
   * thumbnails^1^ - (boolean or Fx options object: default false) Whether to show thumbnails.
   * titles - (boolean) Whether to use captions for image and thumbnail title attributes.
