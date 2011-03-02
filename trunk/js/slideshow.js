@@ -518,6 +518,23 @@ Private method: resize
 			img.set('styles', {'height': Math.ceil(h * dh), 'width': Math.ceil(w * dw)});
 		}	
 	},
+	
+/**
+Private method: scaledSize
+	Returns a size scaled to fit within a set of given constraints
+*/
+	_scaledSize: function (maxW, maxH, currW, currH){
+		var ratio = currH / currW;
+		var delta = maxW - maxH;		
+		if(currW >= maxW && ratio <= 1 && delta <= 0){
+			currW = maxW;
+			currH = currW * ratio;
+		} else if(currH >= maxH){
+			currH = maxH;
+			currW = currH / ratio;
+		}
+		return [Math.round(currW), Math.round(currH)];
+	},
 
 /**
 Private method: start
@@ -725,6 +742,7 @@ Private method: thumbnails
 */
 
 	_thumbnails: function(){
+		var self = this;
  		if (this.options.thumbnails === true) 
  			this.options.thumbnails = {}; 
 		var el = this.slideshow.getElement(this.classes.get('thumbnails'));
@@ -759,7 +777,11 @@ Private method: thumbnails
 			if (this.data.captions[i] && this.options.titles)
 				a.set('title', this.data.captions[i].replace(/<.+?>/gm, '').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, "'"));
 			var img = new Asset.image(this.options.hu + thumbnail, {
-				'onload': function(){this.fireEvent('loaded');}.bind(a) 
+				'onload': function(i){
+					var ps = this.getComputedSize();
+					var ns = self._scaledSize(ps.width, ps.height, i.width, i.height);
+					img.setStyles({'width': ns[0], 'height': ns[1], 'margin-top': Math.round((ps.height - ns[1])/2), 'margin-left': Math.round((ps.width - ns[0])/2)});
+					this.fireEvent('loaded');}.bind(a) 
 			}).inject(a);
 		}, this);
 		thumbnails.set('events', {
