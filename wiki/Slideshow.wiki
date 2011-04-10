@@ -236,3 +236,15 @@ myShow.go(n);
 ==== Arguments: ====
 
   # n - (integer) The index number of the image to jump to, 0 being the first image in the show.
+
+
+=== Property: slide ===
+
+Number of current slide.
+
+
+==== Syntax: ====
+
+{{{
+myShow.slide;
+}}}
