@@ -23,6 +23,7 @@ var myShow = new Slideshow(element, data, options);
 
 ==== Options: ====
 
+  * accesskeys - (object) Object of custom key/label combinations for accessibility accesskeys. The "key" can be any combination of alphanumeric keys and/or modifiers (one of shift, control or alt) separated by commas. The "label" can be any localized text that will appear as a tooltip.
   * captions^1^ - (boolean or Fx options object: default false) Whether to show captions.
   * center^2^ - (boolean: default true) Whether the show should attempt to center images.
   * classes^3^  - (array) An array of CSS class names to use with styling the show.
@@ -48,8 +49,6 @@ var myShow = new Slideshow(element, data, options);
   * titles - (boolean) Whether to use captions for image and thumbnail title attributes.
   * transition - (function: default Sine) Transition to use with base and push type shows (requires Mootools with Fx.Transitions).
   * width - (boolean or integer: default false) Optional width value for the show as a whole integer, if a width value is not given the width of the default image will be used.
-  * preload - (boolean : default false) Optional preloading loads all images at start rather than streaming image by image.
-  * titles - (boolean : default true) Optional titles sets the alt attributes of the images and title attributes of the anchor in slideshow-images.
   
 ==== Returns: ====
   
