@@ -103,7 +103,7 @@ var data = {
 <script type="text/javascript">
   var data = {'1.jpg': {caption: 'Keylin', href: 'keylin.html'}, '2.jpg': {caption: 'Gustavo', href: 'gustavo.html'}, '3.jpg': {caption: 'Amalia', href: 'amalia.html'}};
 
-  var myShow = new Slideshow('my_show', data, {captions: true, controller: {duration: 1000, transition: Fx.Transitions.Elastic.easeOut}, hu: 'images/'});
+  var myShow = new Slideshow('my_show', data, {captions: true, controller: {duration: 1000, transition: 'elastic:in:out'}, hu: 'images/'});
 </script>
 }}}
 
