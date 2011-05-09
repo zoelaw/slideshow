@@ -30,7 +30,7 @@ var myShow = new Slideshow(element, data, options);
   * controller^1^ - (boolean or Fx options object: default false) Whether to show controller.
   * delay - (integer: default 2000) The delay between slide changes in milliseconds (1000 = 1 second).
   * duration - (integer: default 750) The duration of the effect in milliseconds (1000 = 1 second).
-  * fast - (boolean or integer: default false) Affects how the show behaves when the user is navigating via the controller or keyboard: if false/0 the show will always use transitions; if 1 the show will skip transitions if paused; if true/2 the show will skip all transitions and update the slide change instantly.
+  * fast - (boolean, integer or one of the named constants) Originally related to "fast mode" a slideshow mode where transitions were skipped. The named constants are WhenPaused, WhenPlaying and OnStart and can be combined using the bitwise OR operator | (a single bar). For example, fast = WhenPaused tells Slideshow to skip transitions when the user navigates a paused show. Or, fast = WhenPaused | WhenPlaying tells slideshow to always skip transitions when the user navigates the show.
   * height - (boolean or integer: default false) Optional height value for the show as a whole integer, if a height value is not given the height of the default image will be used.
   * href - (string: default empty) A single link for the show, inherited from the HTML href of the default image.
   * hu - (string) Path to the image directory, relative or absolute, default is the root directory of the website, use an empty string for the same directory as the webpage.
