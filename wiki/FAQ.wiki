@@ -158,3 +158,17 @@ This has been fixed for IE7 since rev 131 - get the [http://code.google.com/p/sl
 _I get the error: Asset is not defined_
 
 If you are using Slideshow with a different version of Mootools than the one included with the class, be sure to also add the [http://www.mootools.net/more#Assets Assets utility]. Slideshow requires the Assets utility to stream in images and will not work without it.
+
+=== How can I have the image links open in a new window? ===
+
+_Is there a way to set the `target` attribute?_
+
+Slideshow will inherit any properties already existing in the html. So if your html looks like this: 
+{{{
+<div class="slideshow"> 
+  <a href="http://www.somewhere.com" target="_blank"> 
+    <img src="1.jpg"> 
+  </a> 
+</div> 
+}}}
+Then all the links in your slideshow will inherit the target attribute.
